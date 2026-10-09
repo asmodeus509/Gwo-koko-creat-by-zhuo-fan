@@ -34,3 +34,7 @@ Uploads require a valid admin JWT, and the email must be listed in `ADMIN_EMAILS
 
 ## Important
 This package has been adapted for ImageKit but cannot be proven live until you deploy it with a real PostgreSQL database and your own ImageKit credentials. ImageKit free-tier quotas and upload limits apply. Existing database tables are created non-destructively with `CREATE TABLE IF NOT EXISTS` / `ALTER TABLE ... ADD COLUMN IF NOT EXISTS`.
+
+
+## Render deployment (important)
+Upload the contents of this folder to the ROOT of the GitHub repository. The repository root must contain `package.json`, `render.yaml`, and the `src/` folder. In Render, leave Root Directory blank, use Build Command `npm install`, and Start Command `npm start`. Image uploads use ImageKit; configure `IMAGEKIT_PUBLIC_KEY`, `IMAGEKIT_PRIVATE_KEY`, and `IMAGEKIT_URL_ENDPOINT` in Render Environment. The service also requires `DATABASE_URL`, `JWT_SECRET` (at least 32 characters), and `ADMIN_EMAILS` (the exact admin email).
